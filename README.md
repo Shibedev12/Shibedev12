@@ -1,2 +1,3 @@
-Hey there fellow Github travellers! 
-Shibedev12 Reporting For Duty as a small little bean who is learning to code, so Feedback is very noce to hear so i know what i am doing, You will see some more from this account soon!
+Expect little to no things as I am busy getting my account back on its feet.
+Even after everything ive been through I can and will give this a shot again.
+Take care fellow travelers of the world of codespaces!
