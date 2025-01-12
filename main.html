@@ -15,8 +15,11 @@
         body {
             background-color: #008080;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             font-family: "MS Sans Serif", "Segoe UI", Tahoma, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .window {
@@ -27,7 +30,9 @@
             box-shadow: 1px 1px 0 0 #000;
             width: 90%;
             max-width: 600px;
-            margin: 50px auto;
+            margin: 20px auto;
+            position: relative;
+            z-index: 1;
         }
 
         .title-bar {
@@ -78,6 +83,8 @@
             cursor: pointer;
             font-family: inherit;
             font-size: 14px;
+            min-width: 120px;
+            text-align: left;
         }
 
         .win95-button:active {
@@ -129,6 +136,72 @@
             animation: progress 2s linear forwards;
         }
 
+        .taskbar {
+            background-color: var(--win95-gray);
+            border-top: 2px solid #fff;
+            padding: 2px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .start-button {
+            background-color: var(--win95-gray);
+            border: 2px solid #fff;
+            border-right-color: var(--win95-darker);
+            border-bottom-color: var(--win95-darker);
+            padding: 2px 6px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            margin-right: 6px;
+            cursor: pointer;
+        }
+
+        .start-button img {
+            height: 16px;
+            margin-right: 4px;
+        }
+
+        .taskbar-program {
+            background-color: var(--win95-gray);
+            border: 2px solid #fff;
+            border-right-color: var(--win95-darker);
+            border-bottom-color: var(--win95-darker);
+            padding: 2px 8px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            margin-right: 4px;
+        }
+
+        .start-menu {
+            position: fixed;
+            bottom: 30px;
+            left: 0;
+            background-color: var(--win95-gray);
+            border: 2px solid #fff;
+            border-right-color: var(--win95-darker);
+            border-bottom-color: var(--win95-darker);
+            width: 200px;
+            display: none;
+            z-index: 1001;
+        }
+
+        .start-menu-item {
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+
+        .start-menu-item:hover {
+            background-color: var(--win95-blue);
+            color: white;
+        }
+
         @keyframes progress {
             0% { width: 0%; }
             100% { width: 100%; }
@@ -149,7 +222,7 @@
 
     <div class="window">
         <div class="title-bar">
-            <div class="title-bar-text">Holly's Hubworld - Program Manager</div>
+            <div class="title-bar-text">Program Manager</div>
             <div class="title-bar-controls">
                 <button class="title-bar-button">_</button>
                 <button class="title-bar-button">□</button>
@@ -158,15 +231,32 @@
         </div>
         <div class="window-content">
             <h1>Welcome to Holly's Hubworld!</h1>
-            <p>Your guide to all the things I do!</p>
-            <button class="win95-button">My Documents</button>
-            <button class="win95-button">Programs</button>
-            <button class="win95-button">Settings</button>
+            <p>Your personal Windows 95 experience</p>
+            <button class="win95-button" onclick="window.location.href='http://your-nas-ip'">My NAS</button>
+            <button class="win95-button" onclick="window.location.href='projects.html'">Projects</button>
+            <button class="win95-button" onclick="window.location.href='about.html'">About Me</button>
         </div>
     </div>
 
-    <audio id="bgMusic">
-        <source src="startup.mp3" type="audio/mpeg">
+    <div class="taskbar">
+        <div class="start-button" onclick="toggleStartMenu()">
+            <img src="/api/placeholder/16/16" alt="Start">
+            Start
+        </div>
+        <div class="taskbar-program">
+            Program Manager
+        </div>
+    </div>
+
+    <div class="start-menu" id="startMenu">
+        <div class="start-menu-item">Programs</div>
+        <div class="start-menu-item">Documents</div>
+        <div class="start-menu-item">Settings</div>
+        <div class="start-menu-item">Shut Down...</div>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="BGM.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
@@ -175,8 +265,22 @@
             document.getElementById('bgMusic').play();
             setTimeout(function() {
                 document.getElementById('overlay').style.display = 'none';
-            }, 2000); // Wait for progress bar animation to complete
+            }, 2000);
         };
+
+        function toggleStartMenu() {
+            const startMenu = document.getElementById('startMenu');
+            startMenu.style.display = startMenu.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Close start menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const startMenu = document.getElementById('startMenu');
+            const startButton = event.target.closest('.start-button');
+            if (!startButton && startMenu.style.display === 'block') {
+                startMenu.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
