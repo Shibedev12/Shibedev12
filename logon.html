@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holly's Hubworld - Logon</title>
+    <style>
+        :root {
+            --win95-gray: #c0c0c0;
+            --win95-dark: #808080;
+            --win95-darker: #404040;
+            --win95-blue: #000080;
+        }
+
+        body {
+            background-color: #008080;
+            margin: 0;
+            padding: 0;
+            font-family: "MS Sans Serif", "Segoe UI", Tahoma, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .startup-window {
+            background-color: var(--win95-gray);
+            padding: 20px;
+            border: 2px solid #fff;
+            border-right-color: var(--win95-darker);
+            border-bottom-color: var(--win95-darker);
+            text-align: center;
+        }
+
+        .win95-button {
+            background-color: var(--win95-gray);
+            border: 2px solid #fff;
+            border-right-color: var(--win95-darker);
+            border-bottom-color: var(--win95-darker);
+            padding: 6px 12px;
+            margin: 10px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .win95-button:active {
+            border: 2px solid var(--win95-darker);
+            border-right-color: #fff;
+            border-bottom-color: #fff;
+        }
+
+        .progress-bar {
+            width: 200px;
+            height: 20px;
+            background-color: white;
+            border: 2px solid var(--win95-darker);
+            margin: 10px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background-color: var(--win95-blue);
+            width: 0%;
+            animation: progress 2s linear forwards;
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="startup-window">
+        <h2>Welcome to Holly's Hubworld</h2>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+        <p>Starting Windows 95...</p>
+        <button class="win95-button" id="playButton">Log On</button>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="BGM.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        document.getElementById('playButton').onclick = function() {
+            document.getElementById('bgMusic').play();
+            // Wait for progress bar animation to complete before redirecting
+            setTimeout(function() {
+                window.location.href = 'main.html';
+            }, 2000);
+        };
+    </script>
+</body>
+</html>
