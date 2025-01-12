@@ -49,25 +49,35 @@
     </style>
 </head>
 <body>
+    <audio id="startupSound" preload="auto">
+        <source src="startup.mp3" type="audio/mpeg">
+    </audio>
     <div class="container">
         <div class="logo">HOLLY MEGATRANS</div>
         <div class="content">
-            <div class="line" style="animation-delay: 0.5s">CURRENT SYSTEM DATA</div>
-            <div class="line" style="animation-delay: 1.0s">HOMOPHOBIC BLASTER PCM CARD</div>
-            <div class="line" style="animation-delay: 1.5s">1GB TOSHIBA-INU HDD ON IDE 0:1</div>
-            <div class="line" style="animation-delay: 2.0s">LIBERAL SYSTEMS KH-9000 CPU</div>
-            <div class="line" style="animation-delay: 2.5s">AUBCRUM ONBOARD GRAPHICS</div>
-            <div class="line" style="animation-delay: 3.0s">500MB DUAL CHANNEL CUTIE-EMPORIUM RAM</div>
-            <div class="line redirect" style="animation-delay: 3.5s">Starting Holly's Hubworld....</div>
+            <div class="line" style="animation-delay: 1.0s">CURRENT SYSTEM DATA</div>
+            <div class="line" style="animation-delay: 2.0s">HOMOPHOBIC BLASTER PCM CARD</div>
+            <div class="line" style="animation-delay: 3.0s">1GB TOSHIBA-INU HDD ON IDE 0:1</div>
+            <div class="line" style="animation-delay: 4.0s">LIBERAL SYSTEMS KH-9000 CPU</div>
+            <div class="line" style="animation-delay: 5.0s">AUBCRUM ONBOARD GRAPHICS</div>
+            <div class="line" style="animation-delay: 6.0s">500MB DUAL CHANNEL CUTIE-EMPORIUM RAM</div>
+            <div class="line redirect" style="animation-delay: 7.0s">Starting Holly's Hubworld....</div>
         </div>
     </div>
     <script>
+        // Play the startup sound when the page loads
+        window.addEventListener('load', function() {
+            const audio = document.getElementById('startupSound');
+            audio.play();
+        });
+
         setTimeout(() => {
             document.querySelector('.redirect').style.display = 'block';
             setTimeout(() => {
-                window.location.href = 'main.html';
-            }, 2000);
-        }, 3500);
+                // Comment out the next line if you don't want actual redirection
+                 window.location.href = 'index.html';
+            }, 3000); // Increased delay before redirect
+        }, 7000); // Increased delay to match new animation timing
     </script>
 </body>
 </html>
