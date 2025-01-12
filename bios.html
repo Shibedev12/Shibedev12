@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: "Courier New", monospace;
+            padding: 20px;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .logo {
+            position: absolute;
+            top: 0;
+            right: 0;
+            border: 2px solid #fff;
+            padding: 5px 10px;
+            font-weight: bold;
+        }
+        .content {
+            margin-top: 40px;
+        }
+        .line {
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+            margin: 10px 0;
+            white-space: pre;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .redirect {
+            display: none;
+            animation: blink 1s infinite;
+            margin-top: 20px;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">HOLLY MEGATRANS</div>
+        <div class="content">
+            <div class="line" style="animation-delay: 0.5s">CURRENT SYSTEM DATA</div>
+            <div class="line" style="animation-delay: 1.0s">HOMOPHOBIC BLASTER PCM CARD</div>
+            <div class="line" style="animation-delay: 1.5s">1GB TOSHIBA-INU HDD ON IDE 0:1</div>
+            <div class="line" style="animation-delay: 2.0s">LIBERAL SYSTEMS KH-9000 CPU</div>
+            <div class="line" style="animation-delay: 2.5s">AUBCRUM ONBOARD GRAPHICS</div>
+            <div class="line" style="animation-delay: 3.0s">500MB DUAL CHANNEL CUTIE-EMPORIUM RAM</div>
+            <div class="line redirect" style="animation-delay: 3.5s">Starting Holly's Hubworld....</div>
+        </div>
+    </div>
+    <script>
+        setTimeout(() => {
+            document.querySelector('.redirect').style.display = 'block';
+            setTimeout(() => {
+                window.location.href = 'holly.is-a-furry.net/main.html';
+            }, 2000);
+        }, 3500);
+    </script>
+</body>
+</html>
