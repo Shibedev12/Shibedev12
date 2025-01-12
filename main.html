@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Holly's Hubworld!</title>
+    <title>Holly's Hubworld</title>
     <style>
         :root {
             --win95-gray: #c0c0c0;
@@ -93,49 +93,6 @@
             border-bottom-color: #fff;
         }
 
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #008080;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .startup-window {
-            background-color: var(--win95-gray);
-            padding: 20px;
-            border: 2px solid #fff;
-            border-right-color: var(--win95-darker);
-            border-bottom-color: var(--win95-darker);
-            text-align: center;
-        }
-
-        .progress-bar {
-            width: 200px;
-            height: 20px;
-            background-color: white;
-            border: 2px solid var(--win95-darker);
-            margin: 10px auto;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            background-color: var(--win95-blue);
-            width: 0%;
-            animation: progress 2s linear forwards;
-        }
-
         .taskbar {
             background-color: var(--win95-gray);
             border-top: 2px solid #fff;
@@ -201,25 +158,9 @@
             background-color: var(--win95-blue);
             color: white;
         }
-
-        @keyframes progress {
-            0% { width: 0%; }
-            100% { width: 100%; }
-        }
     </style>
 </head>
 <body>
-    <div id="overlay">
-        <div class="startup-window">
-            <h2>Welcome to Holly's Hubworld</h2>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-            <p>Starting Windows 95...</p>
-            <button class="win95-button" id="playButton">Log On</button>
-        </div>
-    </div>
-
     <div class="window">
         <div class="title-bar">
             <div class="title-bar-text">Program Manager</div>
@@ -249,30 +190,13 @@
     </div>
 
     <div class="start-menu" id="startMenu">
-        <div class="start-menu-item">Programs</div>
-        <div class="start-menu-item">Documents</div>
-        <div class="start-menu-item">Settings</div>
-        <div class="start-menu-item">Shut Down...</div>
+        <div class="start-menu-item" onclick="window.location.href='http://your-nas-ip'">My NAS</div>
+        <div class="start-menu-item" onclick="window.location.href='projects.html'">Projects</div>
+        <div class="start-menu-item" onclick="window.location.href='about.html'">About Me</div>
+        <div class="start-menu-item" onclick="window.location.href='shutdown.html'">Shut Down...</div>
     </div>
 
-    <audio id="bgMusic">
-        <source src="startup.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-    <audio id="bgMusic" loop >
-        <source src="PASSPORT.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
-
     <script>
-        document.getElementById('playButton').onclick = function() {
-            document.getElementById('bgMusic').play();
-            setTimeout(function() {
-                document.getElementById('overlay').style.display = 'none';
-            }, 2000);
-        };
-
         function toggleStartMenu() {
             const startMenu = document.getElementById('startMenu');
             startMenu.style.display = startMenu.style.display === 'none' ? 'block' : 'none';
